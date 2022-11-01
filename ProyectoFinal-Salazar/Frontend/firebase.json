@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "frontendcaroap",
+    "public": "dist/proyecto-final-salazar",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

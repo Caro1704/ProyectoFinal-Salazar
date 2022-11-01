@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -12,6 +12,18 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { HysComponent } from './components/hys/hys.component';
 import { ProyectoComponent } from './components/proyecto/proyecto.component';
 import { FooterComponent } from './components/footer/footer.component';
+import {HttpClient, HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { interceptorProvider } from './service/interceptor-service';
+import { NeweducacionComponent } from './components/educacion/neweducacion.component';
+import { EditeducacionComponent } from './components/educacion/editeducacion.component';
+import { EditSkillComponent } from './components/hys/edit-skill.component';
+import { NewSkillComponent } from './components/hys/new-skill.component';
+import { EditacercadeComponent } from './components/acerca-de/editacercade.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [
@@ -23,14 +35,29 @@ import { FooterComponent } from './components/footer/footer.component';
     EducacionComponent,
     HysComponent,
     ProyectoComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    LoginComponent,
+    NeweducacionComponent,
+    EditeducacionComponent,
+    EditSkillComponent,
+    NewSkillComponent,
+    EditacercadeComponent
+  
+
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
-    NgCircleProgressModule.forRoot({})
+    NgCircleProgressModule.forRoot({}),
+    HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
-  providers: [],
+  providers: [
+    interceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
